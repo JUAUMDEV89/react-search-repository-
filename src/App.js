@@ -1,26 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+
+import './styles/style.css';
+
+import Repo from './components/repo';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+   
+const [repo, setRepo] = useState([]);
+const [value, setValue] = useState('');
+const [name, setName] = useState('JUAUMDEV89');
+
+useEffect(()=>{
+     fetch(`https://api.github.com/users/${name}/repos`)
+      .then(res=>{
+        return res.json();
+      }) 
+      .then((res)=>{
+        setRepo(res);
+      })
+},[name])
+
+  function onChange(event){
+    setValue(event.target.value);    
+  }
+
+  function handleSearchRepo(){
+    setRepo([]);
+    setName(value);
+   
+  }
+
+  return ( 
+    <>
+    <div class="page">
+      <h1>Repositorios</h1>
+      
+      <div>
+      <input onChange={onChange} type="text" placeholder="Coloque o nome do seu usuario" />
+      <input onClick={handleSearchRepo} type="submit" value="Pesquisar" />
+      </div>
+
+     {
+       repo.map(res => (
+         <ul  key={res.id}>
+           <li><Repo 
+             name={res.name}
+             description={res.description}
+             url={res.html_url}
+           /></li>
+         </ul>
+       ))
+     }   
+
+     {
+       repo.length <= 0 && <p>Carregando...</p>
+     }   
+  </div>
+    </>   
+    );
+  }
 
 export default App;

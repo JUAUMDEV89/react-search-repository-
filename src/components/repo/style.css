@@ -1,0 +1,16 @@
+.repo{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 600px;
+    height:80px;
+    justify-content: center;
+    padding-left: 5px;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
