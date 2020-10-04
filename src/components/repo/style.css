@@ -1,13 +1,23 @@
 .repo{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 10px;
     border: 1px solid black;
     border-radius: 5px;
     width: 600px;
     height:80px;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     padding-left: 5px;
+}
+
+.repo a i{
+    margin-right: 10px;
+    color: blueviolet;
+}
+
+.repo-infos p span{
+    font-weight: 600;
 }
 
 a{

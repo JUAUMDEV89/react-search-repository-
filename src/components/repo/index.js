@@ -9,9 +9,11 @@ function Repo({
 }){
     return(
         <div className="repo">
-            <p>Name: {name}</p>
-            <p>Description: {description}</p>
-            <p>Url: <a href={url}>{url}</a></p>
+            <div className="repo-infos">
+                 <p><span>Name:</span> {name}</p>
+                 <p><span>Description:</span> {description}</p>
+            </div>
+            <a href={url}><i class="large material-icons">arrow_forward</i></a>
         </div>
     )
 }

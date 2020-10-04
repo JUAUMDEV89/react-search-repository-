@@ -27,7 +27,7 @@ useEffect(()=>{
   function handleSearchRepo(){
     setRepo([]);
     setName(value);
-   
+    setValue('');
   }
 
   return ( 
@@ -51,10 +51,11 @@ useEffect(()=>{
          </ul>
        ))
      }   
-
+     
      {
        repo.length <= 0 && <p>Carregando...</p>
      }   
+
   </div>
     </>   
     );
